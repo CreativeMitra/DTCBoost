@@ -2,611 +2,586 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>CreativeMitra - Premium Creative Services for DTC Brands</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>creativeMitra - Build A Billion-Dollar Brand</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <style id="app-style">
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       scroll-behavior: smooth;
-      overflow-x: hidden;
-      max-width: 100vw;
     }
     
-    .bg-gradient {
-      background: linear-gradient(135deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    .gradient-bg {
+      background: linear-gradient(90deg, #2B3BA5 0%, #4D2B91 100%);
     }
     
-    .bg-primary {
-      background-color: #4158D0;
-    }
-    
-    .bg-secondary {
-      background-color: #C850C0;
-    }
-    
-    .text-gradient {
-      background: linear-gradient(135deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    .gradient-text {
+      background: linear-gradient(90deg, #4D2B91 0%, #2B3BA5 100%);
       -webkit-background-clip: text;
-      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     
-    .btn-primary {
-      background: linear-gradient(135deg, #4158D0 0%, #C850C0 100%);
+    .card-shadow {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
     }
     
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    .card-shadow:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
     }
     
     .service-card {
+      height: 100%;
       transition: all 0.3s ease;
-      border: 1px solid rgba(200, 80, 192, 0.2);
     }
     
     .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-      border-color: #C850C0;
+      transform: translateY(-8px);
     }
     
-    .package-card {
+    .sticky-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      padding: 1rem 0;
+    }
+    
+    .sticky-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    
+    .btn-primary {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .btn-primary:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.1);
+      z-index: -2;
+    }
+    
+    .btn-primary:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1);
+      transition: all 0.3s;
+      z-index: -1;
+    }
+    
+    .btn-primary:hover:before {
+      width: 100%;
+    }
+
+    .hero-badge {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .testimonial-card {
       transition: all 0.3s ease;
     }
     
-    .package-card:hover {
+    .testimonial-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
-    
-    .launch-card {
-      border-top: 5px solid #FFCC70;
+
+    .section-reveal {
+      visibility: hidden;
     }
-    
-    .scale-card {
-      border-top: 5px solid #4158D0;
-    }
-    
-    .domination-card {
-      border-top: 5px solid #C850C0;
-    }
-    
-    .navbar {
-      backdrop-filter: blur(10px);
-      background-color: rgba(255, 255, 255, 0.8);
-    }
-    
-    .faq-item {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
-    
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-    
-    .faq-answer.active {
-      max-height: 500px;
-    }
-    
-    /* Loading animation */
-    .loading-spinner {
-      display: none;
-      width: 40px;
-      height: 40px;
-      border: 4px solid rgba(0, 0, 0, 0.1);
-      border-left-color: #4158D0;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-    
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
+
+    /* Mobile-specific styles */
+    @media (max-width: 640px) {
+      .sticky-header {
+        padding: 0.75rem 0;
       }
-    }
-    
-    /* Success message animation */
-    .success-message {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
-    }
-    
-    .success-message.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    /* Mobile optimizations */
-    @media (max-width: 768px) {
-      .hero-section {
+      
+      .header-cta {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+      }
+      
+      .hero-title {
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      
+      .hero-cta {
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        width: 100%;
         text-align: center;
+      }
+      
+      .service-card {
+        margin-bottom: 1rem;
+      }
+      
+      .testimonial-card {
+        margin-bottom: 1rem;
       }
     }
   </style>
 </head>
 <body class="bg-gray-50">
-  <!-- Navigation - Removed Book a Call button -->
-  <nav class="navbar fixed top-0 left-0 right-0 z-50 py-3 px-4">
-    <div class="container mx-auto flex justify-center items-center">
-      <div class="text-xl font-bold text-gradient">CreativeMitra</div>
+  <!-- Sticky Header -->
+  <header class="sticky-header bg-white shadow-md">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <div class="logo">
+        <h1 class="text-xl md:text-2xl font-bold gradient-text">creativeMitra<span class="text-purple-700">.</span></h1>
+      </div>
+      <div>
+        <a href="tel:+918860060569" class="btn-primary bg-purple-700 text-white px-3 py-2 md:px-5 md:py-3 rounded-full font-semibold hover:bg-purple-800 text-sm md:text-base header-cta">
+          💬 Book Free Call
+        </a>
+      </div>
     </div>
-  </nav>
+  </header>
 
   <!-- Hero Section -->
-  <section class="hero-section pt-32 pb-16 px-4">
-    <div class="container mx-auto">
-      <div class="flex flex-col md:flex-row items-center">
-        <div class="md:w-full mb-10 md:mb-0 text-center" data-aos="fade-right">
-          <h1 class="text-4xl md:text-5xl font-bold mb-4">Turn Clicks into Customers with High-Converting Branding & AI</h1>
-          <p class="text-lg text-gray-600 mb-8">Stop Losing Customers to Poor Design – Get a High-Converting Brand Identity That Drives Sales 24/7</p>
-          <button class="btn-primary text-white font-semibold px-8 py-4 rounded-full text-lg shadow-lg" onclick="document.getElementById('contact-form').scrollIntoView({behavior: 'smooth'})">Book a Free Strategy Call</button>
-        </div>
+  <section class="pt-24 md:pt-32 pb-16 md:pb-20 px-4">
+    <div class="container mx-auto max-w-6xl section-reveal">
+      <div class="hero-badge mx-auto mb-4 md:mb-6 bg-purple-100 text-purple-700 text-xs md:text-sm font-medium py-1 px-3 md:px-4 rounded-full inline-block">
+        Trusted by 50+ Founders | 100% Done-for-You
+      </div>
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-center mb-4 md:mb-6 leading-tight hero-title">
+        Build A Billion-Dollar Brand —<br>
+        <span class="gradient-text">In One Powerful Pack.</span>
+      </h1>
+      <p class="text-base md:text-xl text-gray-600 text-center max-w-4xl mx-auto mb-6 md:mb-10 hero-subtitle">
+        We craft elite visual identity, conversion-first stores, and scroll-stopping videos to position you like an empire — even before your first sale.
+      </p>
+      <div class="text-center">
+        <a href="#services" class="btn-primary bg-purple-700 text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-bold hover:bg-purple-800 inline-flex items-center text-base md:text-lg hero-cta">
+          🔥 See What's Inside
+          <i class="fas fa-arrow-right ml-2"></i>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- Services Section -->
-  <section id="services" class="py-20 bg-white px-4">
-    <div class="container mx-auto">
-      <div class="text-center mb-16" data-aos="fade-up">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Built to Convert, Not Just Look Good</h2>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto">Our services are specifically tailored for eCommerce and DTC brands focused on growth and conversions.</p>
-      </div>
+  <section id="services" class="py-12 md:py-20 bg-gray-100 px-4">
+    <div class="container mx-auto max-w-6xl section-reveal">
+      <h2 class="text-2xl md:text-4xl font-bold text-center mb-4">What You Get</h2>
+      <p class="text-base md:text-lg text-gray-600 text-center max-w-3xl mx-auto mb-8 md:mb-12">
+        Everything you need to dominate your market and look like a billion-dollar brand from day one.
+      </p>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Service 1 -->
-        <div class="service-card bg-white rounded-xl p-8 shadow-lg" data-aos="fade-up" data-aos-delay="100">
-          <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-            <i class="fas fa-robot text-blue-600 text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3">AI Sales Chatbot</h3>
-          <p class="text-gray-600">24/7 lead capture and customer support. Automate 30% of queries and boost sales by up to 20%.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <!-- Card 1 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 card-shadow service-card">
+          <div class="text-4xl text-purple-700 mb-4">🧠</div>
+          <h3 class="text-lg md:text-xl font-bold mb-4">Billion-Dollar Brand Identity</h3>
+          <ul class="space-y-2 md:space-y-3">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✔</span>
+              <span>5 Logo Concepts + Unlimited Revisions</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✔</span>
+              <span>AI, SVG, PNG, PDF Formats</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✔</span>
+              <span>3 Mockups Per Logo</span>
+            </li>
+          </ul>
         </div>
-        
-        <!-- Service 2 -->
-        <div class="service-card bg-white rounded-xl p-8 shadow-lg" data-aos="fade-up" data-aos-delay="200">
-          <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-            <i class="fas fa-film text-purple-600 text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3">Product Video Mastery</h3>
-          <p class="text-gray-600">Scroll-stopping UGC, ads, and tutorials. Achieve 3–5× more engagement and up to 80% higher conversions.</p>
+
+        <!-- Card 2 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 card-shadow service-card">
+          <div class="text-4xl text-purple-700 mb-4">📱</div>
+          <h3 class="text-lg md:text-xl font-bold mb-4">Ultra-Premium UI/UX</h3>
+          <ul class="space-y-2 md:space-y-3">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✔</span>
+              <span>Fully coded HTML/CSS</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✔</span>
+              <span>Mobile/Desktop Screens</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✔</span>
+              <span>Conversion-optimized checkout</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✔</span>
+              <span>Custom UI Components</span>
+            </li>
+          </ul>
         </div>
-        
-        <!-- Service 3 -->
-        <div class="service-card bg-white rounded-xl p-8 shadow-lg" data-aos="fade-up" data-aos-delay="300">
-          <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-            <i class="fas fa-pencil-ruler text-green-600 text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3">High-Converting UI/UX</h3>
-          <p class="text-gray-600">Profit-optimized layouts for homepages, product pages, and checkouts. Reduce bounce rates by over 50%.</p>
+
+        <!-- Card 3 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 card-shadow service-card">
+          <div class="text-4xl text-purple-700 mb-4">🧲</div>
+          <h3 class="text-lg md:text-xl font-bold mb-4">Elite Landing Page</h3>
+          <ul class="space-y-2 md:space-y-3">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✔</span>
+              <span>High-ticket funnel pre-loaded</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✔</span>
+              <span>Hero, CTA, Benefits, Testimonials</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✔</span>
+              <span>Speed-optimized, responsive</span>
+            </li>
+          </ul>
         </div>
-        
-        <!-- Service 4 -->
-        <div class="service-card bg-white rounded-xl p-8 shadow-lg" data-aos="fade-up" data-aos-delay="400">
-          <div class="bg-pink-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-            <i class="fas fa-palette text-pink-600 text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3">Premium Logo & Branding</h3>
-          <p class="text-gray-600">Luxury logo variations and brand guidelines that make your brand instantly recognizable and trusted.</p>
+
+        <!-- Card 4 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 card-shadow service-card">
+          <div class="text-4xl text-purple-700 mb-4">🤖</div>
+          <h3 class="text-lg md:text-xl font-bold mb-4">AI Chatbot Titan</h3>
+          <ul class="space-y-2 md:space-y-3">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✔</span>
+              <span>Brand-trained AI Assistant</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✔</span>
+              <span>Lead Capture + FAQ Flows</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✔</span>
+              <span>Works 24/7 on your website</span>
+            </li>
+          </ul>
         </div>
-        
-        <!-- Service 5 -->
-        <div class="service-card bg-white rounded-xl p-8 shadow-lg md:col-span-2 lg:col-span-1" data-aos="fade-up" data-aos-delay="500">
-          <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-            <i class="fas fa-code text-yellow-600 text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3">High-ROI Landing Pages</h3>
-          <p class="text-gray-600">Mobile-optimized, offer-driven pages that convert at 15–30% (vs. industry average of 2–3%).</p>
+
+        <!-- Card 5 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 card-shadow service-card md:col-span-2 lg:col-span-1">
+          <div class="text-4xl text-purple-700 mb-4">🎬</div>
+          <h3 class="text-lg md:text-xl font-bold mb-4">Studio-Quality Videos</h3>
+          <ul class="space-y-2 md:space-y-3">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✔</span>
+              <span>6 Videos (UGC, Ads, CEO Story)</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✔</span>
+              <span>Captions, Transitions, CTA</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2">✔</span>
+              <span>MP4, Square, and Vertical</span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Who We Serve Section -->
-  <section id="clients" class="py-20 bg-gray-50 px-4">
-    <div class="container mx-auto">
-      <div class="text-center mb-16" data-aos="fade-up">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Who We Serve??</h2>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto">We specialize in helping these types of businesses grow their online presence and sales.</p>
+  <!-- Testimonials Section -->
+  <section class="py-12 md:py-20 px-4">
+    <div class="container mx-auto max-w-6xl section-reveal">
+      <h2 class="text-2xl md:text-4xl font-bold text-center mb-4">Client Results</h2>
+      <p class="text-base md:text-lg text-gray-600 text-center max-w-3xl mx-auto mb-8 md:mb-12">
+        Don't just take our word for it. Here's what our clients have to say.
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-10">
+        <!-- Testimonial 1 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 testimonial-card">
+          <div class="text-yellow-500 mb-4 text-xl">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="text-base md:text-lg mb-4 md:mb-6 italic">"$30K in 60 days after launching with their landing page."</p>
+          <div class="flex items-center">
+            <div class="h-10 w-10 md:h-12 md:w-12 rounded-full bg-gray-200 flex items-center justify-center">
+              <span class="text-gray-500">JD</span>
+            </div>
+            <div class="ml-3 md:ml-4">
+              <h4 class="font-bold text-sm md:text-base">John Doe</h4>
+              <p class="text-gray-600 text-xs md:text-sm">CEO, TechStart</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 2 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 testimonial-card">
+          <div class="text-yellow-500 mb-4 text-xl">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="text-base md:text-lg mb-4 md:mb-6 italic">"Their AI bot captured 100+ leads in 2 weeks."</p>
+          <div class="flex items-center">
+            <div class="h-10 w-10 md:h-12 md:w-12 rounded-full bg-gray-200 flex items-center justify-center">
+              <span class="text-gray-500">SP</span>
+            </div>
+            <div class="ml-3 md:ml-4">
+              <h4 class="font-bold text-sm md:text-base">Sarah Parker</h4>
+              <p class="text-gray-600 text-xs md:text-sm">Founder, GrowthPlus</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 3 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 testimonial-card">
+          <div class="text-yellow-500 mb-4 text-xl">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="text-base md:text-lg mb-4 md:mb-6 italic">"We got investor-ready branding in just 4 days."</p>
+          <div class="flex items-center">
+            <div class="h-10 w-10 md:h-12 md:w-12 rounded-full bg-gray-200 flex items-center justify-center">
+              <span class="text-gray-500">RK</span>
+            </div>
+            <div class="ml-3 md:ml-4">
+              <h4 class="font-bold text-sm md:text-base">Rahul Kumar</h4>
+              <p class="text-gray-600 text-xs md:text-sm">Founder, NextGen</p>
+            </div>
+          </div>
+        </div>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-        <div class="bg-white p-6 rounded-xl shadow-md text-center" data-aos="fade-up" data-aos-delay="100">
-          <div class="bg-blue-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-store text-blue-600 text-xl"></i>
-          </div>
-          <h3 class="font-semibold text-lg">E-Commerce Startups</h3>
-        </div>
-        
-        <div class="bg-white p-6 rounded-xl shadow-md text-center" data-aos="fade-up" data-aos-delay="200">
-          <div class="bg-purple-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-shopping-bag text-purple-600 text-xl"></i>
-          </div>
-          <h3 class="font-semibold text-lg">DTC Brands</h3>
-        </div>
-        
-        <div class="bg-white p-6 rounded-xl shadow-md text-center" data-aos="fade-up" data-aos-delay="300">
-          <div class="bg-green-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fab fa-shopify text-green-600 text-xl"></i>
-          </div>
-          <h3 class="font-semibold text-lg">Shopify/WooCommerce Store Owners</h3>
-        </div>
-        
-        <div class="bg-white p-6 rounded-xl shadow-md text-center" data-aos="fade-up" data-aos-delay="400">
-          <div class="bg-pink-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-shipping-fast text-pink-600 text-xl"></i>
-          </div>
-          <h3 class="font-semibold text-lg">Dropshippers</h3>
-        </div>
-        
-        <div class="bg-white p-6 rounded-xl shadow-md text-center" data-aos="fade-up" data-aos-delay="500">
-          <div class="bg-yellow-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fab fa-amazon text-yellow-600 text-xl"></i>
-          </div>
-          <h3 class="font-semibold text-lg">Amazon or Flipkart Private Label Sellers</h3>
-        </div>
+      <div class="text-center">
+        <a href="javascript:void(0)" class="inline-flex items-center text-purple-700 font-bold text-sm md:text-base">
+          View Full Case Studies
+          <i class="fas fa-arrow-right ml-2"></i>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Why Choose Us Section -->
-  <section id="why-us" class="py-20 bg-white px-4">
-    <div class="container mx-auto">
-      <div class="text-center mb-16" data-aos="fade-up">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Choose CreativeMitra??</h2>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto">We're not just another creative agency - we're your growth partner focused on measurable results.</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-        <div class="flex items-start space-x-4" data-aos="fade-right">
-          <div class="bg-blue-100 p-3 rounded-full flex-shrink-0">
-            <i class="fas fa-chart-line text-blue-600 text-xl"></i>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold mb-2">ROI-Focused Execution</h3>
-            <p class="text-gray-600">Every creative decision we make is rooted in driving measurable returns for your business, not just aesthetics.</p>
-          </div>
+  <!-- CTA Section -->
+  <section class="py-12 md:py-20 px-4 gradient-bg text-white">
+    <div class="container mx-auto max-w-4xl text-center section-reveal">
+      <h2 class="text-2xl md:text-4xl font-bold mb-6 md:mb-8">Ready to Dominate Like a Billion-Dollar Brand?</h2>
+      <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-6 mb-6 md:mb-10">
+        <div class="flex items-start">
+          <span class="text-green-300 mr-2 text-lg md:text-xl">✅</span>
+          <span class="text-base md:text-xl">Fully Done-for-You</span>
         </div>
-        
-        <div class="flex items-start space-x-4" data-aos="fade-left">
-          <div class="bg-purple-100 p-3 rounded-full flex-shrink-0">
-            <i class="fas fa-bolt text-purple-600 text-xl"></i>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold mb-2">Fast Turnaround Time</h3>
-<p class="text-gray-600">We understand the pace of eCommerce - our streamlined process delivers quality results on tight timelines.</p>
-          </div>
+        <div class="flex items-start">
+          <span class="text-green-300 mr-2 text-lg md:text-xl">✅</span>
+          <span class="text-base md:text-xl">Proven Results</span>
         </div>
-        
-        <div class="flex items-start space-x-4" data-aos="fade-right">
-          <div class="bg-green-100 p-3 rounded-full flex-shrink-0">
-            <i class="fas fa-tag text-green-600 text-xl"></i>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold mb-2">Industry-Specific Creative Assets</h3>
-            <p class="text-gray-600">Our designs are tailored specifically for DTC conversion patterns and eCommerce best practices.</p>
-          </div>
-        </div>
-        
-        <div class="flex items-start space-x-4" data-aos="fade-left">
-          <div class="bg-pink-100 p-3 rounded-full flex-shrink-0">
-            <i class="fas fa-cogs text-pink-600 text-xl"></i>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold mb-2">Automation-Driven Processes</h3>
-            <p class="text-gray-600">Our tech-enabled workflow ensures consistent quality and reduces revisions and back-and-forth.</p>
-          </div>
-        </div>
-        
-        <div class="flex items-start space-x-4 md:col-span-2" data-aos="fade-up">
-          <div class="bg-yellow-100 p-3 rounded-full flex-shrink-0">
-            <i class="fas fa-headset text-yellow-600 text-xl"></i>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold mb-2">Dedicated Support</h3>
-            <p class="text-gray-600">You're never just a ticket number. Get personalized attention from our team throughout your project.</p>
-          </div>
+        <div class="flex items-start">
+          <span class="text-green-300 mr-2 text-lg md:text-xl">✅</span>
+          <span class="text-base md:text-xl">Limited Spots</span>
         </div>
       </div>
-    </div>
-  </section>
-  
-  <!-- Pricing Section -->
-  <section id="pricing" class="py-20 bg-gray-50 px-4">
-    <div class="container mx-auto">
-      <div class="text-center mb-16" data-aos="fade-up">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Packages & Pricing</h2>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto">Choose the package that best suits your business stage and growth goals.</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        <!-- Launch Ready Package -->
-        <div class="package-card launch-card bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-          <div class="p-8">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="text-2xl font-bold">Launch Ready</h3>
-              <div class="bg-yellow-100 w-10 h-10 rounded-full flex items-center justify-center">
-                <span class="text-yellow-600 text-xl">✓</span>
-              </div>
-            </div>
-            <div class="mb-6">
-              <span class="text-4xl font-bold">$2,997</span>
-            </div>
-            <p class="text-gray-600 mb-6">For DTC brands starting fresh</p>
-            <ul class="space-y-3">
-              <li class="flex items-start">
-                <i class="fas fa-check text-yellow-500 mt-1 mr-2"></i>
-                <span>Premium Logo Designs (4 variations + 3 revisions)</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check text-yellow-500 mt-1 mr-2"></i>
-                <span>High Converting UI/UX (Homepage + Product Page)</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check text-yellow-500 mt-1 mr-2"></i>
-                <span>1 Killer Landing Page (15%+ Conversion Rate)</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check text-yellow-500 mt-1 mr-2"></i>
-                <span>AI Sales Chatbot (50 FAQs + Chat-Based Leads Capture)</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check text-yellow-500 mt-1 mr-2"></i>
-                <span>1 Product Promo Video (15–30s ad style, TikTok/Insta Ready)</span>
-              </li>
-            </ul>
-          </div>
-          <div class="p-6 border-t border-gray-100">
-            <button class="w-full py-3 rounded-lg border-2 border-yellow-500 text-yellow-500 font-semibold hover:bg-yellow-500 hover:text-white transition-colors duration-300" onclick="document.getElementById('contact-form').scrollIntoView({behavior: 'smooth'})">Get Started</button>
-          </div>
-        </div>
-        
-        <!-- Scale Mode Package -->
-        <div class="package-card scale-card bg-white rounded-xl shadow-lg overflow-hidden transform scale-105 z-10" data-aos="fade-up">
-          <div class="p-1 bg-gradient"></div>
-          <div class="p-8">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="text-2xl font-bold">Scale Mode</h3>
-              <div class="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center">
-                <span class="text-blue-600 text-xl">✓</span>
-              </div>
-            </div>
-            <div class="mb-6">
-              <span class="text-4xl font-bold">$5,398</span>
-            </div>
-            <p class="text-gray-600 mb-6">For brands doing $10k–50K/month</p>
-            <ul class="space-y-3">
-              <li class="flex items-start">
-                <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
-                <span>Luxury Logo Design (5 versions + 4 Revisions)</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
-                <span>Elite UI/UX (Full Store Design) - Home, Product, Cart, Checkout</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
-                <span>1 High-ROI Landing Page (Built for $100K+ Revenue)</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
-                <span>AI Chatbot Pro (Unlimited FAQs + Chat-Based Leads Capture)</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
-                <span>3 High-Performance Videos (UGC, Ad, Tutorial)</span>
-              </li>
-            </ul>
-          </div>
-          <div class="p-6 border-t border-gray-100">
-            <button class="w-full py-3 rounded-lg bg-gradient text-white font-semibold hover:shadow-lg transition-shadow duration-300" onclick="document.getElementById('contact-form').scrollIntoView({behavior: 'smooth'})">Get Started</button>
-          </div>
-        </div>
-        
-        <!-- Domination Package -->
-        <div class="package-card domination-card bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-          <div class="p-8">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="text-2xl font-bold">Domination Pack</h3>
-              <div class="bg-purple-100 w-10 h-10 rounded-full flex items-center justify-center">
-                <span class="text-purple-600 text-xl">✓</span>
-              </div>
-            </div>
-            <div class="mb-6">
-              <span class="text-4xl font-bold">$9,588</span>
-            </div>
-            <p class="text-gray-600 mb-6">For brands ready to dominate</p>
-            <ul class="space-y-3">
-              <li class="flex items-start">
-                <i class="fas fa-check text-purple-500 mt-1 mr-2"></i>
-                <span>Billion-Dollar Brand Identity (8 Logo Versions + Unlimited Revisions)</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check text-purple-500 mt-1 mr-2"></i>
-                <span>Ultra-Premium UI/UX (Full Store + Checkout Funnel)</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check text-purple-500 mt-1 mr-2"></i>
-                <span>1 Elite Landing Page (Pre-Loaded High-Ticket Funnels)</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check text-purple-500 mt-1 mr-2"></i>
-                <span>AI Chatbot Titan (Smart Sales Flows + 24/7 Customer Support)</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check text-purple-500 mt-1 mr-2"></i>
-                <span>6 Studio-Quality Videos (UGC, Ad, CEO Story, Testimonial, FAQ)</span>
-              </li>
-            </ul>
-          </div>
-          <div class="p-6 border-t border-gray-100">
-            <button class="w-full py-3 rounded-lg border-2 border-purple-500 text-purple-500 font-semibold hover:bg-purple-500 hover:text-white transition-colors duration-300" onclick="document.getElementById('contact-form').scrollIntoView({behavior: 'smooth'})">Get Started</button>
-          </div>
-        </div>
-      </div>
+      <a href="tel:+918860060569" class="btn-primary bg-white text-purple-700 px-6 py-3 md:px-8 md:py-4 rounded-full font-bold hover:bg-gray-100 inline-flex items-center text-base md:text-lg">
+        👉 💬 Book Free Strategy Call
+      </a>
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <section id="faq" class="py-20 bg-white px-4">
-    <div class="container mx-auto max-w-4xl">
-      <div class="text-center mb-16" data-aos="fade-up">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-        <p class="text-lg text-gray-600">Get answers to common questions about our services.</p>
-      </div>
-      
-      <div class="space-y-6">
-        <!-- FAQ Item 1 -->
-        <div class="faq-item rounded-lg bg-gray-50 overflow-hidden" data-aos="fade-up">
-          <div class="faq-question p-6 flex justify-between items-center cursor-pointer">
-            <h3 class="font-semibold text-lg">How long does it take?</h3>
-            <i class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
-          </div>
-          <div class="faq-answer px-6 pb-6">
-            <p class="text-gray-600">Most of our packages are delivered within 7-14 business days, depending on the complexity and revisions needed. Our Launch Ready package typically takes about 7 days, while Scale Mode takes around 10 days, and Domination Pack can take 2-3 weeks due to the extensive deliverables included.</p>
-          </div>
+  <!-- Contact Form Section -->
+  <section class="py-12 md:py-20 px-4">
+    <div class="container mx-auto max-w-2xl section-reveal">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-10">Let's Talk About Your Brand</h2>
+      <form id="contactForm" class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+        <div class="mb-4 md:mb-6">
+          <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+          <input type="text" id="name" name="name" class="w-full px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" required>
         </div>
         
-        <!-- FAQ Item 2 -->
-        <div class="faq-item rounded-lg bg-gray-50 overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-          <div class="faq-question p-6 flex justify-between items-center cursor-pointer">
-            <h3 class="font-semibold text-lg">Do you work with Shopify only?</h3>
-            <i class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
-          </div>
-          <div class="faq-answer px-6 pb-6">
-            <p class="text-gray-600">No, we work with all major eCommerce platforms including Shopify, WooCommerce, BigCommerce, Magento, and custom solutions. Our designs and creative assets are platform-agnostic and can be implemented on any system you use to run your DTC business.</p>
-          </div>
+        <div class="mb-4 md:mb-6">
+          <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+          <input type="email" id="email" name="email" class="w-full px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" required>
         </div>
         
-        <!-- FAQ Item 3 -->
-        <div class="faq-item rounded-lg bg-gray-50 overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-          <div class="faq-question p-6 flex justify-between items-center cursor-pointer">
-            <h3 class="font-semibold text-lg">Can I request changes?</h3>
-            <i class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
-          </div>
-          <div class="faq-answer px-6 pb-6">
-            <p class="text-gray-600">Absolutely! All our packages include revision rounds. Launch Ready includes 1 round of revisions, Scale Mode includes 2 rounds, and Domination Pack includes 3 rounds of comprehensive revisions. Additional revision rounds can be purchased if needed, but most clients find our included revisions sufficient.</p>
-          </div>
+        <div class="mb-4 md:mb-6">
+          <label for="brand" class="block text-gray-700 font-medium mb-2">Brand Name</label>
+          <input type="text" id="brand" name="brand" class="w-full px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" required>
         </div>
         
-        <!-- FAQ Item 4 -->
-        <div class="faq-item rounded-lg bg-gray-50 overflow-hidden" data-aos="fade-up" data-aos-delay="300">
-          <div class="faq-question p-6 flex justify-between items-center cursor-pointer">
-            <h3 class="font-semibold text-lg">How much do your services cost?</h3>
-            <i class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
-          </div>
-          <div class="faq-answer px-6 pb-6">
-            <p class="text-gray-600">Our packages start at $2,997 for the Launch Ready package, which is perfect for new DTC brands. The Scale Mode package is $5,398 for growing brands, and our comprehensive Domination Pack is $9,588 for established brands looking to scale significantly. We also offer custom solutions for enterprise clients with specific needs.</p>
-          </div>
+        <div class="mb-4 md:mb-6">
+          <label for="budget" class="block text-gray-700 font-medium mb-2">Budget</label>
+          <select id="budget" name="budget" class="w-full px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" required>
+            <option value="">Select Budget Range</option>
+            <option value="₹1L-₹2L">₹1L-₹2L</option>
+            <option value="₹2L-₹3L">₹2L-₹3L</option>
+            <option value="₹3L-₹5L">₹3L-₹5L</option>
+            <option value="₹5L+">₹5L+</option>
+          </select>
         </div>
-      </div>
+        
+        <div class="mb-6 md:mb-8">
+          <label for="message" class="block text-gray-700 font-medium mb-2">What are you struggling with right now?</label>
+          <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" required></textarea>
+        </div>
+        
+        <button type="submit" class="w-full btn-primary bg-purple-700 text-white px-6 py-3 md:py-4 rounded-full font-bold hover:bg-purple-800 flex justify-center items-center text-base md:text-lg">
+          🚀 Request My Audit
+        </button>
+      </form>
     </div>
   </section>
 
-  <!-- Footer Section -->
-  <footer class="bg-gray-900 text-white py-16 px-4">
-    <div class="container mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div class="md:pr-8">
-          <h2 class="text-2xl font-bold mb-6">Ready to transform your DTC brand?</h2>
-          <p class="text-gray-400 mb-8">Fill out this quick form and we'll get back to you within 24 hours to discuss your project.</p>
-          
-          <form id="contact-form" action="https://formsubmit.co/upkartdailyfinds@gmail.com" method="POST" class="space-y-4">
-            <!-- FormSubmit Configuration -->
-            <input type="hidden" name="_subject" value="New Inquiry from CreativeMitra">
-            <input type="hidden" name="_template" value="table">
-            <input type="text" name="_honey" style="display:none">
-            
-            <!-- Form Fields -->
-            <div>
-              <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Your Name</label>
-              <input type="text" id="name" name="name" class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500" required>
-            </div>
-            
-            <div>
-              <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email Address</label>
-              <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500" required>
-            </div>
-            
-            <div>
-              <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Your Message</label>
-              <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500" required></textarea>
-            </div>
-            
-            <button type="submit" class="px-6 py-3 bg-gradient rounded-lg font-semibold transition-all duration-300 hover:shadow-lg w-full">
-              Send Message
-            </button>
-          </form>
-        </div>
-        
-        <div class="md:border-l md:border-gray-700 md:pl-8">
-          <div class="mb-8">
-            <h3 class="text-xl font-bold mb-4">Contact Information</h3>
-            <p class="flex items-start space-x-3 mb-3">
-              <i class="fas fa-envelope mt-1 text-purple-400"></i>
-              <span>Contact@creativemitra.xyz</span>
-            </p>
-            <p class="flex items-start space-x-3">
-              <i class="fas fa-phone mt-1 text-purple-400"></i>
-              <span>+91 8860060569</span>
-            </p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-        <p>Copyright © CreativeMitra 2025. All rights reserved.</p>
-      </div>
+  <!-- Sticky Footer -->
+  <div class="sticky-footer bg-purple-800 text-white py-3 md:py-4">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-sm md:text-lg mb-3 md:mb-0">We build brands that dominate. Want in?</p>
+      <a href="tel:+918860060569" class="btn-primary bg-white text-purple-800 px-4 py-1 md:px-6 md:py-2 rounded-full font-semibold hover:bg-gray-100 text-sm md:text-base">
+        Book Strategy Call →
+      </a>
     </div>
-  </footer>
+  </div>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    // Initialize AOS animation library
-    AOS.init({
-      duration: 800,
-      once: true,
-      offset: 100
-    });
-    
-    // FAQ accordion functionality
-    document.querySelectorAll('.faq-question').forEach(question => {
-      question.addEventListener('click', () => {
-        const answer = question.nextElementSibling;
-        const icon = question.querySelector('i');
+  <script id="app-script">
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
         
-        // Toggle the current FAQ item
-        answer.classList.toggle('active');
-        icon.classList.toggle('rotate-180');
-        
-        // Close other FAQ items
-        document.querySelectorAll('.faq-question').forEach(otherQuestion => {
-          if (otherQuestion !== question) {
-            const otherAnswer = otherQuestion.nextElementSibling;
-            const otherIcon = otherQuestion.querySelector('i');
-            
-            otherAnswer.classList.remove('active');
-            otherIcon.classList.remove('rotate-180');
-          }
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
         });
       });
     });
+    
+    // Initialize ScrollReveal
+    window.addEventListener('DOMContentLoaded', () => {
+      ScrollReveal().reveal('.section-reveal', {
+        distance: '50px',
+        duration: 1000,
+        origin: 'bottom',
+        easing: 'cubic-bezier(0.5, 0, 0, 1)',
+        interval: 100
+      });
+    });
+    
+    // Form submission handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        brand: document.getElementById('brand').value,
+        budget: document.getElementById('budget').value,
+        message: document.getElementById('message').value
+      };
+      
+      // Save to localStorage
+      localStorage.setItem('formData', JSON.stringify(formData));
+      
+      // Show loading state
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
+      submitBtn.disabled = true;
+      
+      // Send form data via email (using FormSubmit.co)
+      const formAction = 'https://formsubmit.co/ajax/creativemitraofficial@gmail.com';
+      const formDataObj = new FormData(this);
+      
+      fetch(formAction, {
+        method: 'POST',
+        body: JSON.stringify(Object.fromEntries(formDataObj)),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Reset button state
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        
+        // Show success message
+        Swal.fire({
+          icon: 'success',
+          title: 'Thank You!',
+          text: 'Your audit request has been received. We\'ll get back to you within 24 hours.',
+          confirmButtonColor: '#6D28D9'
+        });
+        
+        // Clear form
+        this.reset();
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong! Please try again or contact us directly.',
+          confirmButtonColor: '#6D28D9'
+        });
+      });
+    });
+    
+    // Load stored form data if available
+    window.addEventListener('DOMContentLoaded', () => {
+      const storedData = localStorage.getItem('formData');
+      
+      if (storedData) {
+        const formData = JSON.parse(storedData);
+        
+        document.getElementById('name').value = formData.name || '';
+        document.getElementById('email').value = formData.email || '';
+        document.getElementById('brand').value = formData.brand || '';
+        document.getElementById('budget').value = formData.budget || '';
+        document.getElementById('message').value = formData.message || '';
+      }
+    });
+    
+    // Open phone call
+    function openCalendly() {
+      window.location.href = 'tel:+918860060569';
+    }
   </script>
-
-  <script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="1bK28_f_23Rv9UIblOv6E";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
-  
 </body>
 </html>
